@@ -40,9 +40,9 @@ namespace Systems
             Debug.Log(descriptionKey);
             Debug.Log(messageKey);
             
-            //dialogComponent.NameLocalizeText.LocalizeText(nameKey);
-            //dialogComponent.DescriptionLocalizeText.LocalizeText(descriptionKey);
-            //dialogComponent.MessageLocalizeText.LocalizeText(messageKey);
+            dialogComponent.NameLocalizeText.LocalizeText(nameKey);
+            dialogComponent.DescriptionLocalizeText.LocalizeText(descriptionKey);
+            dialogComponent.MessageLocalizeText.LocalizeText(messageKey);
             
             dialogComponent.NameText.color = nameColor;
             dialogComponent.PersonImage.sprite = sprite;
