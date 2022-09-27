@@ -17,9 +17,14 @@ namespace Systems
         private void Start()
         {
             dialogComponent = FindObjectOfType<DialogUIComponent>();
+            dialogComponent.NextMessageButton.onClick.AddListener(() =>
+            {
+                currentMessageIndex++;
+                SetCurrentMessage();
+            });
             
             SetDialog();
-            dialogComponent.NextMessageButton.onClick.AddListener(SetCurrentMessage);
+            SetCurrentMessage();
         }
 
         private void SetDialog()
@@ -29,12 +34,15 @@ namespace Systems
 
         private void SetCurrentMessage()
         {
-            currentMessageIndex++;
             currentDialog.GetMessageInfo(currentMessageIndex, out string nameKey, out string descriptionKey, out Color nameColor, out Sprite sprite, out string messageKey);
             
-            dialogComponent.NameLocalizeText.LocalizeText(nameKey);
-            dialogComponent.DescriptionLocalizeText.LocalizeText(descriptionKey);
-            dialogComponent.MessageLocalizeText.LocalizeText(messageKey);
+            Debug.Log(nameKey);
+            Debug.Log(descriptionKey);
+            Debug.Log(messageKey);
+            
+            //dialogComponent.NameLocalizeText.LocalizeText(nameKey);
+            //dialogComponent.DescriptionLocalizeText.LocalizeText(descriptionKey);
+            //dialogComponent.MessageLocalizeText.LocalizeText(messageKey);
             
             dialogComponent.NameText.color = nameColor;
             dialogComponent.PersonImage.sprite = sprite;
